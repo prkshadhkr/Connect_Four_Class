@@ -1,0 +1,111 @@
+/* game board table */
+
+body {
+    background-color: skyblue;
+}
+
+.container1 {
+    width: 520px;
+    height: 458px;
+    margin: 0 auto;
+    padding: 5px;
+    background: skyblue;
+    border: solid;
+    border-color: transparent;
+    border-radius: 10px;
+}
+
+.container2 {
+    width: 520px;
+    height: 35px;
+    margin: 0 auto;
+    padding: 5px;
+    background: skyblue;
+    border: solid;
+    border-color: transparent;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+}
+
+
+/* .center {
+    position: relative;
+} */
+
+#start-btn {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 5px 30px;
+    margin: 2px;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+#board td {
+    width: 70px;
+    height: 70px;
+    border: solid 1px gray;
+    border-radius: 5px;
+}
+
+
+/* .player1:hover {
+    background-color: rgba(255, 0, 0, 0.315);
+}
+
+.player2:hover {
+    background-color: rgba(32, 32, 197, 0.336);
+} */
+
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+    margin: 5px;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    animation-name: fall-animation;
+    animation-duration: 500ms;
+}
+
+@keyframes fall-animation {
+    from {
+        transform: translateY(-450px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+/* TODO: make pieces red/blue,  depending on player 1/2 piece */
+
+
+/* 
+.piece.p1 {
+    background-color: red;
+}
+
+.piece.p2 {
+    background-color: blue;
+} */
+
+input {
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 22px;
+    width: 175px;
+    margin: 2px;
+    padding: 2px;
+    float: left;
+}
