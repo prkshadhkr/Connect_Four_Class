@@ -28,16 +28,15 @@ class Game {
     makeHtmlBoard() {
         const displayBoard = document.querySelector('#board');
         displayBoard.innerHTML = ''; // prevent from reloading html elements again
-        // it has to be outside the loop other wise eventListener won't be removed
+
+        // this.handleGameClick has to be outside the loop other wise removeEventListener won't work.
         this.handleGameClick = this.handleClick.bind(this);
         for (let y = 0; y < this.height; y++) {
             const trRow = document.createElement("tr");
             for (let x = 0; x < this.width; x++) {
                 const tdCol = document.createElement("td");
                 tdCol.setAttribute('id', `${y}-${x}`);
-                // tdCol.classList.add(`${this.currentPlayer.color}`); //***hoover***//
                 tdCol.addEventListener('click', this.handleGameClick);
-                // tdCol.addEventListener('click', this.handleClick.bind(this));
                 trRow.append(tdCol);
             }
             displayBoard.append(trRow);
@@ -69,6 +68,11 @@ class Game {
     /** endGame: announce game end */
     endGame(msg) {
         alert(msg);
+        // remove all event listeners once game is over!
+        const tdColumnArr = document.querySelectorAll('td');
+        tdColumnArr.forEach(column => {
+            column.removeEventListener('click', this.handleGameClick);
+        });
     }
 
     handleClick(e) {
@@ -97,9 +101,9 @@ class Game {
         // switch players
         this.currentPlayer = this.currentPlayer === this.players[0] ? this.players[1] : this.players[0];
 
-        let tdColumnArr = document.querySelectorAll('td');
+        const tdColumnArr = document.querySelectorAll('td');
         tdColumnArr.forEach(column => {
-            // remove event listener once job done
+            // remove event listener once spot is occupied
             if (column.hasChildNodes()) {
                 column.removeEventListener('click', this.handleGameClick);
             }
